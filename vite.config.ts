@@ -3,12 +3,13 @@ import { URL, fileURLToPath } from "node:url";
 import AutoImport from "unplugin-auto-import/vite";
 import Components from "unplugin-vue-components/vite";
 import { ConfigEnv, defineConfig, loadEnv } from "vite";
+import { viteSingleFile } from "vite-plugin-singlefile";
 
 
 // https://vitejs.dev/config/
 export default ({ mode }: ConfigEnv) =>
   defineConfig({
-    base: loadEnv(mode, process.cwd()).VITE_BASE_PATH,
+    base: loadEnv(mode, process.cwd()).VITE_BASE_URL,
     resolve: {
       alias: {
         "@": fileURLToPath(new URL("./src", import.meta.url)),
@@ -25,6 +26,8 @@ export default ({ mode }: ConfigEnv) =>
     },
     plugins: [
       vue({ template: {}, script: { defineModel: true } }),
+
+      // viteSingleFile(),
 
       AutoImport({
         // Auto import functions from Vue, e.g. ref, reactive, toRef...
@@ -63,14 +66,6 @@ export default ({ mode }: ConfigEnv) =>
           chunkFileNames: "static/js/[name]-[hash].js",
           entryFileNames: "static/js/[name]-[hash].js",
           assetFileNames: "static/[ext]/[name]-[hash].[ext]",
-          manualChunks(id) {
-            if (id.includes("node_modules")) {
-              const a = id.toString().split("node_modules/");
-              return a.at(-1)?.split("/")[0];
-            } else if (id.includes("/")) {
-              return "index";
-            }
-          },
         },
       },
     },

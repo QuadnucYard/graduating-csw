@@ -1,0 +1,28 @@
+name: Build and Deploy
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  cache-and-install:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v1
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Build 🔧
+        run: bun build-only
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
+          branch: gh-pages
