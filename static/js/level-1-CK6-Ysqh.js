@@ -1,4 +1,4 @@
-import{u as x,_ as c}from"./progress-CwDf_E0d.js";import{d as h,e as k,f as b,g as y,h as C,o as l,c as u,b as d,u as a,F as v,a as o,i as P}from"./index-BKsNrXzA.js";const B=`传说中，主世界的每一位吴院学子在毕业时，都有机会觉醒「近代物理之徽」，导引量子之力，可以干涉其他平行世界的决策。而这样的人，被称为「宇称人」。
+import{u as x,_ as c}from"./progress-BpSskvff.js";import{d as h,e as k,f as b,g as y,h as C,o as l,c as u,b as d,u as a,F as v,a as o,i as P}from"./index-CVz_4H7o.js";const B=`传说中，主世界的每一位吴院学子在毕业时，都有机会觉醒「近代物理之徽」，导引量子之力，可以干涉其他平行世界的决策。而这样的人，被称为「宇称人」。
 在52096号平行宇宙中，某不知名的时候，吴院曾经诞生了一个吴院王。他绩点第一，史无前例门门满绩，在吴院传奇课程三合一中手撸多周期流水线并从汇编开始自创Chienxiong++；竞赛横扫，电设数模双开还能轻松国一，期间抽空参与奥运会夺得世界冠军；科研天才，NCS从未拒稿……哪怕是感情生活，都是全院知名现充。
 在他毕业的时候，他将他的一切秘密都留在了书院。
 “想要我的财宝吗？去吧，我把一切都放在了那里！”他说。

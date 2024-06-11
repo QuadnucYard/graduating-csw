@@ -1,0 +1,1 @@
+import{_ as e,o as c,c as s}from"./index-CVz_4H7o.js";const o={},r={class:"w-screen h-screen"};function t(n,_){return c(),s("div",r)}const d=e(o,[["render",t],["__scopeId","data-v-40dc319c"]]);export{d as default};
