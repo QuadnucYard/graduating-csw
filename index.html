@@ -1,9 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh">
   <head>
     <meta charset="UTF-8" />
     <!-- <link rel="icon" href="/.svg" /> -->
-    <link rel="stylesheet" href="https://unpkg.com/vue-cesium/dist/index.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>毕业啦！</title>
     <script type="module" crossorigin src="/graduating-csw/static/js/index-CVz_4H7o.js"></script>
@@ -11,6 +10,15 @@
   </head>
 
   <body class="hide-scroll">
+    <script>
+      (function () {
+        let redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== location.href) {
+          history.replaceState(null, null, redirect);
+        }
+      })();
+    </script>
     <div id="app"></div>
   </body>
 </html>
