@@ -16,8 +16,15 @@
       </template>
     </transition>
 
-    <Flier v-if="!isLightOn">
-      <button class="text-gray-900 hover-glow font-bold text-4xl" @click="onToggleLight">开灯</button>
+    <Flier v-if="!isLightOn" :flying="switchClicked">
+      <button
+        class="text-gray-900 font-bold text-4xl"
+        :class="{ 'hover-glow': switchClicked }"
+        :style="{ 'user-select': switchClicked ? 'auto' : 'none' }"
+        @click="onToggleLight"
+      >
+        开灯
+      </button>
     </Flier>
   </div>
 </template>
@@ -35,6 +42,7 @@ const level = levels[2];
 const progressStore = useProgressStore();
 
 const isLightOn = ref(false);
+const switchClicked = ref(false);
 
 onMounted(() => {
   isDark.value = !isLightOn.value;
@@ -47,8 +55,12 @@ const text1P = computed(() => {
 });
 
 const onToggleLight = (e: MouseEvent) => {
-  isLightOn.value = !isLightOn.value;
-  toggleTheme(e);
+  if (!switchClicked.value) {
+    switchClicked.value = true;
+  } else {
+    isLightOn.value = !isLightOn.value;
+    toggleTheme(e);
+  }
 };
 
 const inputPassword = () => {
