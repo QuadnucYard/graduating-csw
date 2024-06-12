@@ -22,9 +22,9 @@ import { useProgressStore } from "@/stores/progress";
 
 const level = levels[1];
 
-const props = defineProps<{ open: string }>();
+const props = defineProps<{ open?: string }>();
 
-const isOpen = computed(() => props.open.includes("open"));
+const isOpen = computed(() => props.open?.includes("open") === true);
 
 const router = useRouter();
 
@@ -34,8 +34,17 @@ const p1 = ref<InstanceType<typeof Paragraphs>>();
 
 let timer: number | undefined = undefined;
 
+onBeforeMount(() => {
+  if (!props.open || props.open.length === 0) {
+    router.replace("door-closed");
+  }
+});
+
 onMounted(() => {
   if (!isOpen.value) {
+    if (!props.open || props.open.length === 0) {
+      router.replace("door-closed");
+    }
     timer = setInterval(checkPass, 1000);
   }
 });

@@ -12,7 +12,7 @@ export const useProgressStore = defineStore("progress", () => {
   const progress = computed({
     get: () => {
       const a = parseInt(decryptText(progressStorage.value, key));
-      return isNaN(a) ? 0 : a;
+      return isNaN(a) ? -1 : a;
     },
     set: (v) => (progressStorage.value = encryptText(v.toString(), key)),
   });
@@ -25,11 +25,8 @@ export const useProgressStore = defineStore("progress", () => {
   };
 
   const updateProgress = (prog: number) => {
-    if (progress.value < 0) {
-      return;
-    }
     progress.value = prog;
-    if (prog < settings.levelNum) {
+    if (prog >= 0 && prog < settings.levelNum) {
       router.push({ name: `level${prog + 1}` });
       const scroll = useWindowScroll();
       scroll.y.value = 0;

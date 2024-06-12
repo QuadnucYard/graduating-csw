@@ -11,37 +11,42 @@ const routes: RouteRecordRaw[] = [
         redirect: "door-closed",
       },
       {
-        path: "door-:open",
+        path: "door-:open?",
         name: "level1",
         component: () => import("@/pages/level-1.vue"),
         props: true,
       },
       {
-        path: "level2",
+        path: "coming",
         name: "level2",
         component: () => import("@/pages/level-2.vue"),
       },
       {
-        path: "level3",
+        path: "rooms",
         name: "level3",
         component: () => import("@/pages/level-3.vue"),
       },
       {
-        path: "level4",
+        path: "phone",
         name: "level4",
         component: () => import("@/pages/level-4.vue"),
       },
     ],
   },
   {
+    path: "/index",
+    name: "start",
+    component: () => import("@/views/start.vue"),
+  },
+  {
     path: "/failure",
     name: "failure",
-    component: () => import("@/layouts/failure.vue"),
+    component: () => import("@/views/failure.vue"),
   },
   {
     path: "/win",
     name: "win",
-    component: () => import("@/layouts/failure.vue"),
+    component: () => import("@/views/failure.vue"),
   },
 ];
 

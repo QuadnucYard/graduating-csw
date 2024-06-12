@@ -13,7 +13,9 @@ const router: Router = createRouter({
 router.beforeEach((to, from, next) => {
   if (to.name === "main") {
     const progressStore = useProgressStore();
-    if (progressStore.progress < settings.levelNum) {
+    if (progressStore.progress < 0) {
+      next({ name: "start" });
+    } else if (progressStore.progress < settings.levelNum) {
       next({ name: `level${progressStore.progress + 1}` });
     } else {
       next({ name: "win" });
