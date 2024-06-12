@@ -37,14 +37,15 @@ const levels = {
 export const goals: {
   title: string;
   content: string;
-  achievement: string | null;
-  icon: string;
+  achievement?: string;
+  icon?: string;
 }[] = JSON.parse(levels[4].goal);
 
 export const settings: {
   levelNum: number;
   level2: { pwd: string };
   level3: { doors: number; trueDoor: number; pwd: string };
+  level4: { be: string; he: string };
 } = JSON.parse(decryptText(settingData, key));
 
 export default levels;

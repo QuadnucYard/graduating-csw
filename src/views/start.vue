@@ -8,8 +8,8 @@
     </template>
     <template v-else>
       <div class="center-panel text-gray-700 text-center text-2xl space-y-4">
-        <div class="text-3xl">毕业快乐</div>
-        <button class="border-solid border-2 rounded p-2 bg-gray-100" @click="startGame">开始游戏</button>
+        <div class="text-3xl">做吴院人，上大舞台！</div>
+        <button class="border-solid border-2 rounded p-2 bg-gray-100" @click="startGame">上大舞台</button>
       </div>
     </template>
   </div>

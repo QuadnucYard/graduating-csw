@@ -26,6 +26,8 @@ const levels = {
   4: {
     pre: await encryptFile("data/level-4-0.txt"),
     goal: await encryptFile("data/level-4-goal.json"),
+    bad: await encryptFile("data/level-4-1.txt"),
+    happy: await encryptFile("data/level-4-2.txt"),
   },
 };
 
