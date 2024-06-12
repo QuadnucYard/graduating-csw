@@ -5,7 +5,7 @@
     <transition name="fade-slide" mode="out-in">
       <template v-if="isLightOn">
         <div>
-          <Paragraphs :data="text1P" class="fade-slide-div" />
+          <Paragraphs :data="text1P" />
           <hr class="border-1 my-2" />
           <div class="text-center">
             <button class="text-yellow-500 bg-yellow-100 border-yellow-300 border-2 rounded p-1" @click="inputPassword">

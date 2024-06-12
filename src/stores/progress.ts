@@ -25,7 +25,9 @@ export const useProgressStore = defineStore("progress", () => {
   };
 
   const updateProgress = (prog: number) => {
-    progress.value = prog;
+    if (prog > progress.value) {
+      progress.value = prog;
+    }
     if (prog >= 0 && prog < settings.levelNum) {
       router.push({ name: `level${prog + 1}` });
       const scroll = useWindowScroll();

@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div>
     <Paragraphs :data="level.body" />
 
     <hr class="border-1 my-2" />
@@ -12,9 +12,11 @@
         </template>
       </div>
     </template>
-    <template v-else>
-      <Paragraphs :data="`楼小其打开了${doorChosen}号房的门`" />
-      <Transition name="sub-comments">
+
+    <Transition name="slide-fade">
+      <div v-if="doorChosen != 0">
+        <Paragraphs :data="`楼小其打开了${doorChosen}号房的门`" />
+
         <div v-if="doorChosen != settings.level3.trueDoor">
           <Paragraphs :data="level.fail" />
           <div class="text-center">
@@ -31,8 +33,8 @@
             </div>
           </div>
         </div>
-      </Transition>
-    </template>
+      </div>
+    </Transition>
   </div>
 </template>
 
@@ -63,17 +65,41 @@ const onSubmit = () => {
 </script>
 
 <style scoped>
-.sub-comments-leave-active,
-.sub-comments-enter-active {
-  transition: max-height 0.5s linear;
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.5s ease;
 }
-.sub-comments-enter,
-.sub-comments-leave-to {
+
+.slide-enter-from,
+.slide-leave-to {
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.slide-fade-enter-active, .slide-fade-leave-active {
+  transition: all 1.0s ease;
+}
+
+.slide-fade-enter-from, .slide-fade-leave-to {
+  max-height: 0;
+  /* opacity: 0; */
+  padding: 0;
+}
+
+.dropdown-content {
+  overflow: hidden;
   max-height: 0;
   opacity: 0;
 }
-.sub-comments-enter-to,
-.sub-comments-leave {
-  max-height: 136px;
+
+.slide-fade-enter-to {
+  max-height: 1000px; /* 根据内容的高度调整 */
+  opacity: 1;
+}
+
+.slide-fade-leave-from {
+  max-height: 1000px; /* 根据内容的高度调整 */
+  opacity: 1;
 }
 </style>
