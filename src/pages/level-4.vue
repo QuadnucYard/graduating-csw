@@ -1,14 +1,16 @@
 <template>
   <div>
     <Paragraphs :data="level.pre" />
-    <hr class="border-1 my-2" />
+    <hr class="border-1 my-4" />
     <template v-if="chosen === undefined">
-      <div class="grid grid-cols-2 gap-4 mx-auto w-fit">
+      <div class="border-solid border-4 rounded-lg p-2 m-auto w-fit bg-indigo-50">
+        <div class="grid grid-cols-2 gap-4 mx-auto w-fit">
         <template v-for="(item, i) in goals" :key="item.title">
-          <button class="border-solid border-2 rounded-lg text-center" @click="chooseApp(i)">
+          <button class="border-solid border-2 rounded-lg text-center w-16 h-16 bg-blue-100" @click="chooseApp(i)">
             {{ item.title }}
           </button>
         </template>
+      </div>
       </div>
     </template>
     <div v-if="chosen !== undefined">
