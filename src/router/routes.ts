@@ -1,22 +1,20 @@
 import type { RouteRecordRaw } from "vue-router";
 
-
 const routes: RouteRecordRaw[] = [
   {
     path: "/",
     name: "main",
-    redirect: { name: "level1" },
     component: () => import("@/layouts/main.vue"),
     children: [
       {
         path: "level1",
-        redirect: { name: "level1" },
+        redirect: "door-closed",
       },
       {
-        path: "door-closed",
+        path: "door-:open",
         name: "level1",
-        alias: "door-open",
         component: () => import("@/pages/level-1.vue"),
+        props: true,
       },
       {
         path: "level2",
@@ -38,6 +36,11 @@ const routes: RouteRecordRaw[] = [
   {
     path: "/failure",
     name: "failure",
+    component: () => import("@/layouts/failure.vue"),
+  },
+  {
+    path: "/win",
+    name: "win",
     component: () => import("@/layouts/failure.vue"),
   },
 ];

@@ -26,7 +26,7 @@
           <div class="text-center">
             <div class="border-2 rounded border-purple-200 px-4 py-2 text-center w-fit m-auto">
               <span>输入密码：</span>
-              <input v-model="password" class="border-2 rounded px-1 w-16" />
+              <input v-model="password" class="border-2 rounded px-1 w-32" />
               <button class="border-2 rounded border-orange-400 px-1 ml-2" @click="onSubmit">确认</button>
             </div>
           </div>

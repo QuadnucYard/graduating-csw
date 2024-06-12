@@ -52,7 +52,7 @@ const onToggleLight = (e: MouseEvent) => {
 };
 
 const inputPassword = () => {
-  const pwd = prompt("保险箱密码（4位）");
+  const pwd = prompt("保险箱密码");
   if (pwd === settings.level2.pwd) {
     progressStore.updateProgress(2);
   }
