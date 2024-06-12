@@ -1,5 +1,5 @@
 <template>
-  <button class="w-32 h-12 rounded-lg shadow text-red-100 bg-red-600" @click="progressStore.reset()">重启世界线</button>
+  <button class="w-32 h-12 rounded-lg shadow text-red-100 bg-red-600 m-8" @click="progressStore.reset()">重启世界线</button>
 </template>
 
 <script setup lang="ts">

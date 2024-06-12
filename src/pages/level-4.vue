@@ -16,12 +16,12 @@
         </div>
       </div>
     </template>
-    <div v-if="chosen !== undefined">
+    <div v-else>
       <div>
         <Paragraphs :data="goals[chosen].content" />
         <Paragraphs v-if="ending" :data="ending" />
         <div>
-          <img v-if="goals[chosen].icon" :src="imageUrl(goals[chosen].icon!)" class="ml-auto my-2" />
+          <!-- <img v-if="goals[chosen].icon" :src="imageUrl(goals[chosen].icon!)" class="ml-auto my-2" /> -->
         </div>
         <div class="my-auto"></div>
         <div v-if="goals[chosen].achievement" class="text-center trick">
@@ -29,6 +29,12 @@
         </div>
       </div>
     </div>
+
+    <Transition name="fade-slide">
+      <div v-if="chosen !== undefined && goals[chosen].icon" class="notification">
+        <img :src="imageUrl(goals[chosen].icon!)" class="ml-auto my-2" />
+      </div>
+    </Transition>
   </div>
 </template>
 
@@ -60,4 +66,27 @@ const chooseApp = (i: int) => {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}
+
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition: all 1s ease;
+}
+
+.fade-slide-enter-from,
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.fade-slide-enter-to, .fade-slide-leave-from {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+</style>
