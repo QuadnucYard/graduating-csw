@@ -16,20 +16,33 @@
         </div>
       </div>
     </template>
+
+    <!-- 已选择 -->
     <div v-else>
       <div>
+        <!-- 正常内容 -->
         <Paragraphs :data="goals[chosen].content" />
-        <Paragraphs v-if="ending" :data="ending" />
-        <div>
-          <!-- <img v-if="goals[chosen].icon" :src="imageUrl(goals[chosen].icon!)" class="ml-auto my-2" /> -->
+
+        <div v-if="!goals[chosen].achievement" class="w-full max-w-screen-sm m-auto">
+          <img
+            :src="treasures[treasureIndex]"
+            alt="已经到底啦！"
+            class="object-contain border-solid border-4 rounded"
+            @click="onClickTreasure"
+          />
         </div>
-        <div class="my-auto"></div>
+
+        <!-- 结局 -->
+        <Paragraphs v-if="ending" :data="ending" />
+
+        <!-- 重启 -->
         <div v-if="goals[chosen].achievement" class="text-center trick">
           <ResetButton />
         </div>
       </div>
     </div>
 
+    <!-- 成就 -->
     <Transition name="fade-slide">
       <div v-if="chosen !== undefined && goals[chosen].icon" class="notification">
         <img :src="imageUrl(goals[chosen].icon!)" class="ml-auto my-2" />
@@ -39,6 +52,11 @@
 </template>
 
 <script setup lang="ts">
+import { useLocalStorage } from "@vueuse/core";
+
+import img1 from "@/assets/img/t1.webp";
+import img2 from "@/assets/img/t2.webp";
+import img3 from "@/assets/img/t3.webp";
 import levels, { goals, settings } from "@/assets/levels";
 
 const level = levels[4];
@@ -48,6 +66,9 @@ const chosen = ref<int | undefined>(undefined);
 const ending = ref<string | undefined>();
 
 const imageUrl = (name: string) => new URL(`../assets/img/${name}`, import.meta.url).href;
+
+const treasures = [img1, img2, img3];
+const treasureIndex = useLocalStorage("treasure", 0);
 
 const chooseApp = (i: int) => {
   chosen.value = i;
@@ -63,6 +84,10 @@ const chooseApp = (i: int) => {
       ending.value = level.bad;
     }
   }
+};
+
+const onClickTreasure = () => {
+  treasureIndex.value++;
 };
 </script>
 
@@ -84,9 +109,9 @@ const chooseApp = (i: int) => {
   transform: translateX(100%);
 }
 
-.fade-slide-enter-to, .fade-slide-leave-from {
+.fade-slide-enter-to,
+.fade-slide-leave-from {
   opacity: 1;
   transform: translateX(0);
 }
-
 </style>
