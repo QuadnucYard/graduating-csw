@@ -36,7 +36,7 @@ export const useProgressStore = defineStore("progress", () => {
   };
 
   const fail = () => {
-    router.push({ name: "failure" });
+    router.replace({ name: "failure" });
   };
 
   return { progress, reset, updateProgress, fail };

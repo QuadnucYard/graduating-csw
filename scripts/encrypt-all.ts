@@ -16,6 +16,7 @@ const levels = {
   },
   2: {
     pre: await encryptFile("data/level-2-0.txt"),
+    mid: await encryptFile("data/level-2-2.txt"),
     body: await encryptFile("data/level-2-1.txt"),
   },
   3: {

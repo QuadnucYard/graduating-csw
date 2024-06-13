@@ -1,10 +1,21 @@
 <template>
   <div class="welcome-container">
     <template v-if="!videoEnded">
-      <video ref="videoRef" autoplay playsinline class="welcome-video" @ended="showButton" @click="videoRef?.play()">
+      <video
+        ref="videoRef"
+        autoplay
+        playsinline
+        class="welcome-video"
+        @play="onVideoPlay"
+        @ended="onVideoEnd"
+        @click="videoRef?.play()"
+      >
         <source src="/start.mp4" type="video/mp4" />
         您的浏览器不支持 HTML5 视频。
       </video>
+      <div v-if="!videoPlayed" class="center-panel text-gray-700 text-center text-2xl space-y-4 select-none">
+        点击开始
+      </div>
     </template>
     <template v-else>
       <div class="center-panel text-gray-700 text-center text-2xl space-y-4">
@@ -20,11 +31,16 @@ import { useProgressStore } from "@/stores/progress";
 
 const videoRef = ref<HTMLVideoElement>();
 
+const videoPlayed = ref(false);
 const videoEnded = ref(false);
 
 const progressStore = useProgressStore();
 
-const showButton = () => {
+const onVideoPlay = () => {
+  videoPlayed.value = true;
+};
+
+const onVideoEnd = () => {
   videoEnded.value = true;
 };
 

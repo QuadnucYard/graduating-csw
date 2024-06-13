@@ -2,10 +2,15 @@
   <div>
     <Paragraphs :data="level.body" />
     <hr class="border-1 my-2" />
+
     <template v-if="!isOpen">
       <Paragraphs ref="p1" :data="level.end_fake" />
-      <div class="text-orange-500 text-center">（提示：请你用你的力量干涉这个世界，帮助楼小其打开门吧！）</div>
+      <div class="text-gray-50 text-center ">
+        <div class="hover:text-orange-500">（提示：请你用你的力量干涉这个世界，帮助楼小其打开门吧！）</div>
+        <div class="hover:text-orange-500">（提示：想想所有网页的特性）</div>
+      </div>
     </template>
+
     <template v-else>
       <Paragraphs :data="level.end_true" />
       <div class="text-center">

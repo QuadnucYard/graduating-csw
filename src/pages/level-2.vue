@@ -2,13 +2,20 @@
   <div class="hide-scroll">
     <Paragraphs :data="level.pre" class="dark:blur-[1px]" />
 
+    <Transition name="fade-simple">
+      <Paragraphs v-if="switchClicked" :data="level.mid" class="dark:blur-[1px]" />
+    </Transition>
+
     <transition name="fade-slide" mode="out-in">
       <template v-if="isLightOn">
         <div>
           <Paragraphs :data="text1P" />
-          <hr class="border-1 my-2" />
+          <!-- <hr class="border-1 my-2" /> -->
           <div class="text-center">
-            <button class="text-yellow-500 bg-yellow-100 border-yellow-300 border-2 rounded p-1" @click="inputPassword">
+            <button
+              class="text-yellow-500 bg-yellow-100 border-yellow-300 border-2 rounded p-1 opacity-0 hover:opacity-100"
+              @click="inputPassword"
+            >
               输入密码
             </button>
           </div>
@@ -45,7 +52,11 @@ const isLightOn = ref(false);
 const switchClicked = ref(false);
 
 onMounted(() => {
+  isLightOn.value = progressStore.progress >= 2;
   isDark.value = !isLightOn.value;
+  if (isDark.value) {
+    document.body.style.overflowY = "hidden";
+  }
 });
 
 const text1P = computed(() => {
@@ -59,6 +70,7 @@ const onToggleLight = (e: MouseEvent) => {
     switchClicked.value = true;
   } else {
     isLightOn.value = !isLightOn.value;
+    document.body.style.overflowY = "auto";
     toggleTheme(e);
   }
 };
@@ -102,5 +114,19 @@ const inputPassword = () => {
 .fade-slide-leave-to {
   opacity: 0;
   transform: translateY(-100%);
+}
+
+.fade-simple-enter-active,
+.fade-simple-leave-active {
+  transition: all 2s ease;
+}
+
+.fade-simple-enter-from {
+  opacity: 0;
+  color: yellowgreen;
+}
+
+.fade-simple-enter-to {
+  opacity: 1;
 }
 </style>

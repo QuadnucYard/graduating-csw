@@ -19,8 +19,8 @@ let timer: number | undefined = undefined;
 
 const mouse = useMouse();
 const flierPos = reactive({
-  x: width.value * (Math.random() * 0.1 + 0.8),
-  y: height.value * (Math.random() * 0.1 + 0.8),
+  x: width.value * (Math.random() * 0.2 + 0.4),
+  y: height.value * (Math.random() * 0.1 + 0.7),
 });
 // const flierPos = reactive({ x: 0, y: 0 });
 const vel = { x: 0, y: 0 };
