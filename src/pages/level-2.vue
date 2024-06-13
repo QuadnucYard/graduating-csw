@@ -37,6 +37,7 @@
 </template>
 
 <script setup lang="ts">
+import { SHA256 } from "crypto-js";
 import dayjs from "dayjs";
 
 import levels from "@/assets/levels";
@@ -77,7 +78,7 @@ const onToggleLight = (e: MouseEvent) => {
 
 const inputPassword = () => {
   const pwd = prompt("保险箱密码");
-  if (pwd === settings.level2.pwd) {
+  if (pwd && SHA256(pwd).toString() === settings.level2.pwd) {
     progressStore.updateProgress(2);
   }
 };

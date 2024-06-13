@@ -58,6 +58,7 @@ import img1 from "@/assets/img/t1.webp";
 import img2 from "@/assets/img/t2.webp";
 import img3 from "@/assets/img/t3.webp";
 import levels, { goals, settings } from "@/assets/levels";
+import { SHA256 } from "crypto-js";
 
 const level = levels[4];
 
@@ -78,7 +79,7 @@ const chooseApp = (i: int) => {
       chosen.value = undefined;
       return;
     }
-    if (pwd === settings.level4.he) {
+    if (SHA256(pwd).toString() === settings.level4.he) {
       ending.value = level.happy;
     } else {
       ending.value = level.bad;

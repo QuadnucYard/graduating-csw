@@ -31,7 +31,9 @@
               <div class="border-2 rounded border-purple-200 bg-purple-50 px-4 py-2 text-center w-fit m-auto">
                 <span>输入密码：</span>
                 <input v-model="password" class="border-2 rounded px-1 w-32" />
-                <button class="border-2 rounded border-orange-400 bg-orange-50 px-1 ml-2" @click="onSubmit">确认</button>
+                <button class="border-2 rounded border-orange-400 bg-orange-50 px-1 ml-2" @click="onSubmit">
+                  确认
+                </button>
               </div>
             </div>
           </Transition>
@@ -42,6 +44,8 @@
 </template>
 
 <script setup lang="ts">
+import { SHA256 } from "crypto-js";
+
 import levels from "@/assets/levels";
 import { settings } from "@/assets/levels";
 import { useProgressStore } from "@/stores/progress";
@@ -67,7 +71,7 @@ const chooseDoor = (i: int) => {
 };
 
 const onSubmit = () => {
-  if (password.value === settings.level3.pwd) {
+  if (SHA256(password.value).toString() === settings.level3.pwd) {
     progressStore.updateProgress(3);
   } else {
     progressStore.fail();
@@ -78,7 +82,7 @@ const onSubmit = () => {
 <style scoped>
 .slide-enter-active,
 .slide-leave-active {
-  transition: all 2.0s ease;
+  transition: all 2s ease;
 }
 
 .slide-enter-from,
@@ -90,7 +94,7 @@ const onSubmit = () => {
 
 .slide-fade-enter-active,
 .slide-fade-leave-active {
-  transition: all 2.0s ease;
+  transition: all 2s ease;
 }
 
 .slide-fade-enter-from,
@@ -109,7 +113,6 @@ const onSubmit = () => {
   max-height: 500px; /* 根据内容的高度调整 */
   opacity: 1;
 }
-
 
 .fade-simple-enter-active,
 .fade-simple-leave-active {

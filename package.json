@@ -13,8 +13,10 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@types/crypto-js": "^4.2.2",
     "@vueuse/core": "^10.10.0",
     "aes-js": "^3.1.2",
+    "crypto-js": "^4.2.0",
     "dayjs": "^1.11.11",
     "pinia": "^2.1.7",
     "vue": "^3.4.21",
