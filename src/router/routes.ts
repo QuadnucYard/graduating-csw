@@ -1,3 +1,4 @@
+import { settings } from "@/assets/levels";
 import type { RouteRecordRaw } from "vue-router";
 
 const routes: RouteRecordRaw[] = [
@@ -11,23 +12,23 @@ const routes: RouteRecordRaw[] = [
         redirect: "door-closed",
       },
       {
-        path: "door-:open?",
+        path: settings.level1.path,
         name: "level1",
         component: () => import("@/pages/level-1.vue"),
         props: true,
       },
       {
-        path: "coming",
+        path: settings.level2.path,
         name: "level2",
         component: () => import("@/pages/level-2.vue"),
       },
       {
-        path: "rooms",
+        path: settings.level3.path,
         name: "level3",
         component: () => import("@/pages/level-3.vue"),
       },
       {
-        path: "phone",
+        path: settings.level4.path,
         name: "level4",
         component: () => import("@/pages/level-4.vue"),
       },
