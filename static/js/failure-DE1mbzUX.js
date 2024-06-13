@@ -1,0 +1,1 @@
+import{_ as e,o as c,c as s}from"./index-B-ylWdgu.js";const o={},r={class:"w-screen h-screen"};function t(n,_){return c(),s("div",r)}const f=e(o,[["render",t],["__scopeId","data-v-892cf4c2"]]);export{f as default};
