@@ -23,7 +23,7 @@
         <!-- 正常内容 -->
         <Paragraphs :data="goals[chosen].content" />
 
-        <div v-if="!goals[chosen].achievement" class="w-full max-w-screen-sm m-auto">
+        <div v-if="!goals[chosen].achievement && goals[chosen].content" class="w-full max-w-screen-sm m-auto">
           <img
             :src="treasures[treasureIndex]"
             alt="已经到底啦！"
